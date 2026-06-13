@@ -1,0 +1,37 @@
+# ── 通用 ──
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+.atomcode/
+
+# ── C++ ──
+cpp/build/
+
+# ── Rust ──
+rust/target/
+
+# ── Go ──
+go/todo
+go/todo.exe
+
+# ── TypeScript ──
+ts/node_modules/
+ts/dist/
+
+# ── Python ──
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Editor ──
+.idea/
+.vscode/
+*.swp
