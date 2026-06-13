@@ -140,6 +140,7 @@ ID  状态  标题                创建时间
 | Go   | go build | `go/todo` |
 | TS   | Node.js / tsx | `ts/src/index.ts` (npx tsx) |
 | Python | 直接运行 | `python/todo_cli/__main__.py` (python3 -m) |
+| GLib (C) | Makefile + pkg-config | `glib/todo` |
 | Shell | 直接运行 | `shell/todo.sh` |
 | Lua  | 直接运行 | `lua/todo_cli.lua` (lua) |
 

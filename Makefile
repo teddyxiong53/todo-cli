@@ -130,6 +130,32 @@ sh-test:
 sh-clean:
 	@echo "=== Shell: clean (no artifacts) ==="
 
+# ─── GLib ────────────────────────────────────────────────────────
+GLIB_DIR       = glib
+GLIB_BIN       = $(GLIB_DIR)/todo
+GLIB_TEST_BIN  = $(GLIB_DIR)/test_todo
+GLIB_CFLAGS   := $(shell pkg-config --cflags glib-2.0 json-glib-1.0 2>/dev/null)
+GLIB_LIBS     := $(shell pkg-config --libs glib-2.0 json-glib-1.0 2>/dev/null)
+
+.PHONY: glib-build glib-run glib-test glib-clean
+
+glib-build:
+	@echo "=== GLib: 构建 ==="
+	cc $(GLIB_CFLAGS) -o $(GLIB_BIN) $(GLIB_DIR)/main.c $(GLIB_DIR)/todo_cli.c $(GLIB_LIBS)
+
+glib-run: glib-build
+	@echo "=== GLib: 运行 ==="
+	$(GLIB_BIN) $(ARGS)
+
+glib-test: glib-build
+	@echo "=== GLib: 测试 ==="
+	cc $(GLIB_CFLAGS) -o $(GLIB_TEST_BIN) $(GLIB_DIR)/test_todo.c $(GLIB_DIR)/todo_cli.c $(GLIB_LIBS)
+	$(GLIB_TEST_BIN)
+
+glib-clean:
+	@echo "=== GLib: 清理 ==="
+	rm -f $(GLIB_BIN) $(GLIB_TEST_BIN)
+
 # ─── Lua ─────────────────────────────────────────────────────────
 LUA_DIR = lua
 
@@ -151,7 +177,7 @@ lua-clean:
 
 # ─── 聚合目标 ──────────────────────────────────────────────────────
 
-LANGS = cpp rust go ts py sh lua
+LANGS = cpp rust go ts py sh glib lua
 
 define LANG_TARGET
 build-$(1):
