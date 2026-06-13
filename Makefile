@@ -78,9 +78,9 @@ ts-build:
 	@echo "=== TypeScript: 构建 ==="
 	cd $(TS_DIR) && npm install && npx tsc
 
-ts-run: ts-build
+ts-run:
 	@echo "=== TypeScript: 运行 ==="
-	node $(TS_DIR)/dist/index.js $(ARGS)
+	cd $(TS_DIR) && npx tsx src/index.ts $(ARGS)
 
 ts-test:
 	@echo "=== TypeScript: 测试 ==="
