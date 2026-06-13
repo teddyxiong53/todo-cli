@@ -138,9 +138,10 @@ ID  状态  标题                创建时间
 | C++  | CMake | `cpp/build/todo` |
 | Rust | Cargo | `rust/target/release/todo` |
 | Go   | go build | `go/todo` |
-| TS   | Node.js / tsx | `ts/dist/index.js` (node运行) |
-| Python | 直接运行 | `python/todo_cli/__main__.py` (python -m) |
+| TS   | Node.js / tsx | `ts/src/index.ts` (npx tsx) |
+| Python | 直接运行 | `python/todo_cli/__main__.py` (python3 -m) |
 | Shell | 直接运行 | `shell/todo.sh` |
+| Lua  | 直接运行 | `lua/todo_cli.lua` (lua) |
 
 ## 5. 测试策略
 

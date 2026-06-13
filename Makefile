@@ -130,9 +130,28 @@ sh-test:
 sh-clean:
 	@echo "=== Shell: clean (no artifacts) ==="
 
+# ─── Lua ─────────────────────────────────────────────────────────
+LUA_DIR = lua
+
+.PHONY: lua-build lua-run lua-test lua-clean
+
+lua-build:
+	@echo "=== Lua: no build needed ==="
+
+lua-run:
+	@echo "=== Lua: 运行 ==="
+	cd $(LUA_DIR) && lua todo_cli.lua $(ARGS)
+
+lua-test:
+	@echo "=== Lua: 测试 ==="
+	cd $(LUA_DIR) && lua -e "package.path = './?.lua;' .. package.path" test_todo.lua
+
+lua-clean:
+	@echo "=== Lua: clean (no artifacts) ==="
+
 # ─── 聚合目标 ──────────────────────────────────────────────────────
 
-LANGS = cpp rust go ts py sh
+LANGS = cpp rust go ts py sh lua
 
 define LANG_TARGET
 build-$(1):
