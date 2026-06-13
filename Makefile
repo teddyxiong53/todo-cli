@@ -99,16 +99,17 @@ py-build:
 
 py-run:
 	@echo "=== Python: 运行 ==="
-	python -m todo_cli $(ARGS)
+	python3 -m todo_cli $(ARGS)
 
 py-test:
 	@echo "=== Python: 测试 ==="
-	cd $(PYTHON_DIR) && python -m pytest
+	cd $(PYTHON_DIR) && python3 -m pytest
 
 py-clean:
 	@echo "=== Python: clean (no artifacts) ==="
 	find $(PYTHON_DIR) -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null; true
 	find $(PYTHON_DIR) -type f -name '*.pyc' -delete
+	rm -rf $(PYTHON_DIR)/.pytest_cache
 
 # ─── Shell ────────────────────────────────────────────────────────
 SHELL_DIR = shell
